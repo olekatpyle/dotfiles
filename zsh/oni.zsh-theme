@@ -74,13 +74,15 @@ function git_time_since_commit() {
     fi
 }
 
-#PROMPT='
-#%{$fg[yellow]%}%m%{$reset_color%} %{$fg[white]%}明日は明日の風が吹く%{$reset_color%} %{$fg[red]%}%(5~|%-1~/…/%3~|%4~) %{$reset_color%}$(git_prompt_short_sha)$(git_prompt_info)
-#$(prompt_char) '
+# PROMPT='
+#  %{$fg[yellow]%}%m%{$reset_color%} %{$fg[white]%}明日は明日の風が吹く%{$reset_color%} %{$fg[red]%}%(5~|%-1~/…/%3~|%4~) %{$reset_color%}$(git_prompt_short_sha)$(git_prompt_info)
+# $(prompt_char) '
 
 SEP=$'\ue0b0'
-
+ITA=$'\e[3m'
+# PROMPT='
+# ${ITA}%F{198}%K{000} %m%F{015} %F{000}%k$SEP %f%F{208}%(3~|%-1~/…/%2~|%3~) %(?.%F{157} .%F{198} %?)%F{000} %k%f${ITA}'
 PROMPT='
-%F{198}%K{000} %m%F{015} %F{000}%k$SEP %f%F{208}%(3~|%-1~/…/%2~|%3~) %(?.%F{157} .%F{198} %?)%F{000} %k%f'
+${ITA}%F{198}%K{000} %1d %F{015} %F{000}%k$SEP %f %(?.%F{157} .%F{198} %?)%F{000} %k%f${ITA}'
 
 RPROMPT='$(git_prompt_short_sha)$(git_prompt_info)${return_status}$(git_time_since_commit)$(git_prompt_status)%{$reset_color%}'
